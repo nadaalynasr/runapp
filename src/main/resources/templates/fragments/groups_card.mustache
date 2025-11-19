@@ -1,0 +1,25 @@
+<div class="group-card">
+    <div class="group-card-info">
+        <p class="group-name">{{name}}</p>
+
+        <p class="group-next-run">
+            NEXT RUN: {{nextRunDisplay}}
+        </p>
+
+        <p class="group-members">
+            Members: {{memberCount}}
+        </p>
+    </div>
+
+    {{#isMember}}
+    <form method="post" action="/groups/{{id}}/leave">
+        <button type="submit" class="btn btn-leave">LEAVE</button>
+    </form>
+    {{/isMember}}
+
+    {{^isMember}}
+    <form method="post" action="/groups/{{id}}/join">
+        <button type="submit" class="btn btn-join">JOIN</button>
+    </form>
+    {{/isMember}}
+</div>
