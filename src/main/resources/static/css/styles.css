@@ -8,10 +8,34 @@
     src: url("/fonts/Montserrat-VariableFont_wght.ttf");
 }
 
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.posts {
+    display: flex;
+    margin: 3rem 0 0 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .heading {
     display: flex;
     font-family: Druk-Wide;
 }
+
+#recent-activity {
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-family: Druk-Wide;
+}
+
+/* NAV BAR */
 
 .title-bar {
     background-color: rgb(187, 186, 186);
@@ -106,3 +130,79 @@ h1, .page-title {
     font-family: Montserrat;
     font-size: 1.2rem;
 }
+
+/* RUN CARD */
+
+.run-card {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+
+.framed {
+    width: 50%;
+    border: 0.8pt solid rgba(0, 0, 0, 0.60);
+    border-radius: 20pt;
+}
+
+.basic-run {
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+}
+
+.user-info {
+    font-family: Druk-Wide;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+
+.basic-run img {
+    border-radius: 50%;
+    width: 50px;
+}
+
+.run-body {
+    /* why wont this div take up the whole card length  */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+    justify-content: center;
+    font-family: Montserrat;
+    flex: 1;
+    /* border: 1px solid red; */
+    gap: 1.5rem
+}
+
+.run-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.run-date {
+    justify-self: flex-end;
+    align-self: flex-end;
+    font-family: Druk-Wide;
+    color: gray;
+}
+
+.run-title {
+    display: flex;
+    font-family: Druk-Wide;
+    justify-self: center;
+    align-self: center;
+}
+
+
