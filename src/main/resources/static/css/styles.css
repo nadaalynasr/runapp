@@ -67,6 +67,69 @@ hr {
     color: #00000057;
 }
 
+h1, .page-title {
+    font-family: Druk-Wide, sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.03em;
+}
+
+.group-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+}
+
+
+.group-card-info p {
+    margin: 0.2rem 0;
+}
+
+.group-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.btn {
+    font-family: Druk-Wide;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-join, .btn-leave {
+    background-color: #35c759;
+    color: black;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.group-name {
+    text-transform: uppercase;
+    font-family: Druk-Wide;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.group-next-run {
+    font-family: Druk-Wide;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.group-members {
+    font-family: Montserrat;
+    font-size: 1.2rem;
+}
 
 /* RUN CARD */
 

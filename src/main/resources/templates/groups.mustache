@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Groups</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<nav>
+    {{> fragments/nav_bar }}
+</nav>
+<hr/>
+<main class="page-groups">
+
+    <h1 class="page-title">MY GROUPS</h1>
+    <section class="groups-section">
+        {{#myGroups}}
+            {{> fragments/groups_card }}
+        {{/myGroups}}
+    </section>
+
+    <h1 class="page-title">FIND GROUPS</h1>
+    <section class="groups-section">
+        {{#discoverGroups}}
+            {{> fragments/groups_card }}
+        {{/discoverGroups}}
+    </section>
+
+</main>
+</body>
+</html>
