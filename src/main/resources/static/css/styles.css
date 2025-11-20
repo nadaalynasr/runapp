@@ -128,7 +128,12 @@ hr {
     justify-content: space-between;
 }
 
-/* TODO ADD RUN DATE */
+.run-date {
+    justify-self: flex-end;
+    align-self: flex-end;
+    font-family: Druk-Wide;
+    color: gray;
+}
 
 .run-title {
     display: flex;
@@ -136,3 +141,5 @@ hr {
     justify-self: center;
     align-self: center;
 }
+
+
