@@ -1,0 +1,11 @@
+<div class="three-metrics-wrapper">
+    {{#metrics}}
+        <div class="input-and-label-wrapper">
+            <label class="metric-label" for="{{id}}">{{label}}</label>
+            <div class="input-metrics-wrapper">
+                <input id="{{id}}" name="{{name}}" class="input-metrics" type="{{dataType}}">
+            </div>
+        </div>
+    {{/metrics}}
+</div>
+
