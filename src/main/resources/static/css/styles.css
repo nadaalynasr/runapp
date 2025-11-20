@@ -67,6 +67,154 @@ hr {
     color: #00000057;
 }
 
+/*for log_run page - centered title*/
+.centered-title {
+    font-family: Druk-Wide;
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 48px;
+}
+
+/*for log_run AND create_group page - input run/group title*/
+.input-title-wrapper {
+  width: 80%;
+  max-width: 700px;
+  margin: 0.5rem auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50px;
+  background-color: #d9d9d9; 
+  text-align: center;
+}
+
+.input-title {
+  font-family: Druk-Wide;
+  font-size: 36px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  border: none;         
+  background-color: transparent; 
+  outline: none;         
+}
+
+/*for log_run AND create_group page - input run/group metrics (3)*/
+.three-metrics-wrapper {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin-top: 24px;
+}
+
+.input-and-label-wrapper {
+  width: 20%;
+  max-width: 400px;
+  margin: 0.5rem auto;
+  padding: 20px 5px 5px;
+  border-radius: 20px;
+  background-color: #d9d9d9; 
+  text-align: center;
+}
+
+.metric-label {
+  font-family: Druk-Wide;
+  font-size: 24px;
+}
+
+.input-metrics-wrapper {
+  width: 64%;
+  max-width: 320px;
+  max-height: 150px;
+  margin: 0.5rem auto;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #ffffff; 
+  text-align: center;
+}
+
+.input-metrics {
+  font-family: Druk-Wide;
+  font-size: 36px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  border: none;         
+  background-color: transparent; 
+  outline: none;  
+}
+
+/*for log_run page - share to feed toggle*/
+.share-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.share-row input[type="checkbox"] {
+  appearance: none;
+  width: 50px;
+  height: 28px;
+  background: #ccc;
+  border-radius: 28px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.share-row input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.share-row input[type="checkbox"]:checked {
+  background: #34C759;
+}
+
+.share-row input[type="checkbox"]:checked::before {
+  transform: translateX(22px);
+}
+
+.share-label {
+  font-family: Druk-Wide;
+  font-size: 24px;
+}
+
+/*for log_run AND create_group page - the big save button*/
+.big-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.big-save-button {
+  width: 280px;
+  height: 70px;
+  background-color: #34C759;
+  border-radius: 50px;
+  font-family: Druk-Wide;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.big-save-button:hover {
+  background-color: #31b953;
+  color: #212020;
+}
 h1, .page-title {
     font-family: Druk-Wide, sans-serif;
     font-weight: normal;
