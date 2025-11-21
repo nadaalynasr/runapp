@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<nav>
+    {{> fragments/nav_bar }}
+</nav>
+<hr/>
+
+<main class="page-auth">
+    <h1 class="page-title">LOGIN</h1>
+
+    <section class="auth-card">
+        {{#errorMessage}}
+            <p class="auth-error">{{errorMessage}}</p>
+        {{/errorMessage}}
+
+        <form method="post" action="/login" class="auth-form">
+            <label class="auth-label">
+                Username
+                <input name="username" type="text" class="auth-input" placeholder="Enter username">
+            </label>
+
+            <label class="auth-label">
+                Password
+                <input name="password" type="password" class="auth-input" placeholder="Enter password">
+            </label>
+
+            <button type="submit" class="auth-button">LOGIN</button>
+
+            <p class="auth-footer">
+                Don’t have an account?
+                <a href="/register" class="auth-link">Register</a>
+            </p>
+        </form>
+    </section>
+</main>
+
+</body>
+</html>

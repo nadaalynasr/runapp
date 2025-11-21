@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<nav>
+    {{> fragments/nav_bar }}
+</nav>
+<hr/>
+
+<main class="page-auth">
+    <h1 class="page-title">REGISTER</h1>
+
+    <section class="auth-card">
+        {{#errorMessage}}
+            <p class="auth-error">{{errorMessage}}</p>
+        {{/errorMessage}}
+
+        <form method="post" action="/register" class="auth-form">
+            <label class="auth-label">
+                First Name
+                <input name="firstName" type="text" class="auth-input" placeholder="Enter first name">
+            </label>
+
+            <label class="auth-label">
+                Last Name
+                <input name="lastName" type="text" class="auth-input" placeholder="Enter last name">
+            </label>
+
+            <label class="auth-label">
+                Email
+                <input name="email" type="email" class="auth-input" placeholder="Enter email">
+            </label>
+
+            <label class="auth-label">
+                Username
+                <input name="username" type="text" class="auth-input" placeholder="Choose a username">
+            </label>
+
+            <label class="auth-label">
+                Password
+                <input name="password" type="password" class="auth-input" placeholder="Create a password">
+            </label>
+
+            <button type="submit" class="auth-button">CREATE ACCOUNT</button>
+
+            <p class="auth-footer">
+                Already have an account?
+                <a href="/login" class="auth-link">Login</a>
+            </p>
+        </form>
+    </section>
+</main>
+
+</body>
+</html>
