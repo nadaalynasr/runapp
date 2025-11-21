@@ -8,10 +8,34 @@
     src: url("/fonts/Montserrat-VariableFont_wght.ttf");
 }
 
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.posts {
+    display: flex;
+    margin: 3rem 0 0 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .heading {
     display: flex;
     font-family: Druk-Wide;
 }
+
+#recent-activity {
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-family: Druk-Wide;
+}
+
+/* NAV BAR */
 
 .title-bar {
     background-color: rgb(187, 186, 186);
@@ -43,6 +67,154 @@ hr {
     color: #00000057;
 }
 
+/*for log_run page - centered title*/
+.centered-title {
+    font-family: Druk-Wide;
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 48px;
+}
+
+/*for log_run AND create_group page - input run/group title*/
+.input-title-wrapper {
+  width: 80%;
+  max-width: 700px;
+  margin: 0.5rem auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 50px;
+  background-color: #d9d9d9; 
+  text-align: center;
+}
+
+.input-title {
+  font-family: Druk-Wide;
+  font-size: 36px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  border: none;         
+  background-color: transparent; 
+  outline: none;         
+}
+
+/*for log_run AND create_group page - input run/group metrics (3)*/
+.three-metrics-wrapper {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin-top: 24px;
+}
+
+.input-and-label-wrapper {
+  width: 20%;
+  max-width: 400px;
+  margin: 0.5rem auto;
+  padding: 20px 5px 5px;
+  border-radius: 20px;
+  background-color: #d9d9d9; 
+  text-align: center;
+}
+
+.metric-label {
+  font-family: Druk-Wide;
+  font-size: 24px;
+}
+
+.input-metrics-wrapper {
+  width: 64%;
+  max-width: 320px;
+  max-height: 150px;
+  margin: 0.5rem auto;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #ffffff; 
+  text-align: center;
+}
+
+.input-metrics {
+  font-family: Druk-Wide;
+  font-size: 36px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  border: none;         
+  background-color: transparent; 
+  outline: none;  
+}
+
+/*for log_run page - share to feed toggle*/
+.share-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.share-row input[type="checkbox"] {
+  appearance: none;
+  width: 50px;
+  height: 28px;
+  background: #ccc;
+  border-radius: 28px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.share-row input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.share-row input[type="checkbox"]:checked {
+  background: #34C759;
+}
+
+.share-row input[type="checkbox"]:checked::before {
+  transform: translateX(22px);
+}
+
+.share-label {
+  font-family: Druk-Wide;
+  font-size: 24px;
+}
+
+/*for log_run AND create_group page - the big save button*/
+.big-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.big-save-button {
+  width: 280px;
+  height: 70px;
+  background-color: #34C759;
+  border-radius: 50px;
+  font-family: Druk-Wide;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.big-save-button:hover {
+  background-color: #31b953;
+  color: #212020;
+}
 h1, .page-title {
     font-family: Druk-Wide, sans-serif;
     font-weight: normal;
@@ -175,3 +347,78 @@ h1, .page-title {
     text-decoration: underline;
     font-weight: 500;
 }
+/* RUN CARD */
+
+.run-card {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+
+.framed {
+    width: 50%;
+    border: 0.8pt solid rgba(0, 0, 0, 0.60);
+    border-radius: 20pt;
+}
+
+.basic-run {
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+}
+
+.user-info {
+    font-family: Druk-Wide;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+
+.basic-run img {
+    border-radius: 50%;
+    width: 50px;
+}
+
+.run-body {
+    /* why wont this div take up the whole card length  */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+    justify-content: center;
+    font-family: Montserrat;
+    flex: 1;
+    /* border: 1px solid red; */
+    gap: 1.5rem
+}
+
+.run-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.run-date {
+    justify-self: flex-end;
+    align-self: flex-end;
+    font-family: Druk-Wide;
+    color: gray;
+}
+
+.run-title {
+    display: flex;
+    font-family: Druk-Wide;
+    justify-self: center;
+    align-self: center;
+}
+
+
