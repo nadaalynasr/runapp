@@ -421,4 +421,55 @@ h1, .page-title {
     align-self: center;
 }
 
+/*stats style*/
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
 
+.stat-box{
+    background: #dcdcdc;
+    width: 250px;
+    height: 140px;
+    border-radius: 15px;
+    padding: 25px;
+    font-size: 22px;
+    font-weight: 800px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-left: 7%;
+}
+
+.run-card {
+    width: 20%;
+    max-width: 400px;
+    margin: 0.5rem auto;
+    padding: 20px 5px 5px;
+    border-radius: 20px;
+    background-color: #d9d9d9; 
+    text-align: center;
+}
+
+.run-card-row{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top: 24px;
+}
+.run-date {
+    font-family: Druk-Wide;
+    color: black;
+}
+
+.stat-card-wrapper {
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top: 24px;
+}

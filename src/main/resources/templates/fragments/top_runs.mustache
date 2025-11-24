@@ -1,0 +1,18 @@
+<div class="section-title">TOP 3 RUNS:</div>
+<div class="top-runs-container">
+    {{#topRuns}}
+        <div class="run-card">
+            <div class="run-card-row">
+                <div>
+                    <strong>{{title}}</strong><br><br>
+                    LENGTH: {{length}}<br>
+                    TIME: {{time}}
+                </div>
+
+                <div class="run-date">
+                    {{date}}
+                </div>
+            </div>
+        </div>
+    {{/topRuns}}
+</div>
