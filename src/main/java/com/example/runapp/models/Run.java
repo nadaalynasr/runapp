@@ -13,8 +13,6 @@ public class Run {
     private Double distanceMeters;
     private Double bpm;
 
-    public Run() {}
-
     public Run(Integer userId, Date runDate, Timestamp startTime, Timestamp endTime, Integer elapsedTime, Double distanceMeters, Double bpm) {
         this.userId = userId;
         this.runDate = runDate;
