@@ -52,6 +52,37 @@ public class RunService {
             }
     }
 
+
+        public List<Run> getRuns() throws SQLException {
+        List<Run> runs = new ArrayList<>();
+        String sql = "SELECT * FROM run ORDER BY run_date DESC";
+
+
+        try (Connection conn = dataSource.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+
+
+            while (rs.next()) {
+                Integer runId = rs.getInt("run_id");
+                Integer userId = rs.getInt("user_id");
+                Date runDate = rs.getDate("run_date");
+                Timestamp startTime = rs.getTimestamp("start_time");
+                Timestamp endTime = rs.getTimestamp("end_time");
+                Integer elapsedTime = rs.getInt("elapsed_time");
+                Double distanceMeters = rs.getDouble("distance_meters");
+                Double bpm = rs.getDouble("bpm");
+
+
+                Run run = new Run(userId, runDate, startTime, endTime, elapsedTime, distanceMeters, bpm);
+                run.setRunId(runId);
+                runs.add(run);
+            }
+        }
+        return runs;
+    }
+
+
 }
 
 
