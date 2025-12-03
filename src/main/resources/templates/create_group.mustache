@@ -8,15 +8,18 @@
         {{> fragments/nav_bar }}
     </nav>
 
-    {{> fragments/centered_title }}
+    <form action="/create-group" method="post">
+        {{> fragments/centered_title }}
 
-    {{> fragments/input_title }}
+        {{> fragments/input_title }}
 
-    {{> fragments/input_metrics }}
+        {{> fragments/input_metrics }}
 
-    {{> fragments/big_save_button }}
+        {{> fragments/description_box}}
+
+        {{> fragments/big_save_button }}
+    </form>
 
 </body>
-
 
 </html>
