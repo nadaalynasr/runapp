@@ -43,7 +43,7 @@ create table if not exists stats (
     foreign key (user_id) references users(user_id)
 );
 
-create table if not exists groups (
+create table if not exists group_table ( 
     group_id int auto_increment,
     group_name varchar(100),
     description text,
@@ -62,7 +62,7 @@ create table if not exists group_membership (
     role varchar(50),
     primary key (user_id, group_id),
     foreign key (user_id) references users(user_id),
-    foreign key (group_id) references groups(group_id)
+    foreign key (group_id) references group_table(group_id)
 );
 
 create table if not exists personal_best (
