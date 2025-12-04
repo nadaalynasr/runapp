@@ -46,10 +46,12 @@ create table if not exists stats (
 create table if not exists group_table ( 
     group_id int auto_increment,
     group_name varchar(100),
-    description text,
     created_by_user_id int,
     is_private boolean,
     member_count int not null,
+    next_run_date date,
+    next_run_time time,
+    member_max int,
     primary key (group_id),
     foreign key (created_by_user_id) references users(user_id),
     unique (group_name)
