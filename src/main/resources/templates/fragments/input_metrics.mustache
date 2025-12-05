@@ -3,7 +3,7 @@
         <div class="input-and-label-wrapper">
             <label class="metric-label" for="{{id}}">{{label}}</label>
             <div class="input-metrics-wrapper">
-                <input id="{{id}}" name="{{name}}" class="input-metrics" type="{{dataType}}">
+                <input id="{{id}}" name="{{name}}" class="input-metrics" type="{{dataType}}" {{#placeholder}}placeholder="{{placeholder}}"{{/placeholder}}>
             </div>
         </div>
     {{/metrics}}

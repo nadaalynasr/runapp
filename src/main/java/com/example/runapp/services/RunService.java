@@ -33,7 +33,7 @@ public class RunService {
         Double distanceMeters, 
         Double bpm) 
         throws SQLException {
-        final String sql = "INSERT INTO run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        final String sql = "insert into run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = dataSource.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -55,7 +55,7 @@ public class RunService {
 
         public List<Run> getRuns() throws SQLException {
         List<Run> runs = new ArrayList<>();
-        String sql = "SELECT * FROM run ORDER BY run_date DESC";
+        String sql = "select * from run order by run_date desc";
 
 
         try (Connection conn = dataSource.getConnection();
