@@ -1,6 +1,8 @@
 package com.example.runapp.services;
 
 import com.example.runapp.models.GroupsView;
+import com.example.runapp.models.TrendingView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

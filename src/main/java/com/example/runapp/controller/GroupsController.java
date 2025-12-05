@@ -42,4 +42,5 @@ public class GroupsController {
         groupsService.leaveGroup(userId, groupId);
         return "redirect:/groups";
     }
+    
 }
