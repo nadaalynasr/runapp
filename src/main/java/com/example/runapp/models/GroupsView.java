@@ -1,5 +1,8 @@
 package com.example.runapp.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GroupsView {
     public int id;
     public String name;

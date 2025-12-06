@@ -9,15 +9,15 @@
     </nav>
 
     {{> fragments/centered_title }}
+    <form action="/log-run" method="post">
+        {{> fragments/input_title }}
 
-    {{> fragments/input_title }}
+        {{> fragments/input_metrics }}
 
-    {{> fragments/input_metrics }}
+        {{> fragments/share_toggle }}
 
-    {{> fragments/share_toggle }}
-
-    {{> fragments/big_save_button }}
-
+        {{> fragments/big_save_button }}
+    </form>
 </body>
 
 

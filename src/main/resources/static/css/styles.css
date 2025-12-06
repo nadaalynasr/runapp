@@ -15,7 +15,6 @@ body {
 }
 
 
-
 main {
     display: flex;
     flex-direction: column;
@@ -287,7 +286,7 @@ h1, .page-title {
 }
 
 .page-auth {
-    max-width: 420px;       /* slightly wider so inputs feel spacious */
+    max-width: 420px;
     margin: 4rem auto;
     text-align: center;
     font-family: Montserrat;
@@ -492,3 +491,14 @@ h1, .page-title {
     flex-direction: column;
     gap: 10px;
 }
+.empty-message {
+    font-family: Druk-Wide;
+    font-size: 2rem;
+    color:  #9b9b9b;;
+    margin-top: 2rem;
+    border-radius: 20px;
+    align-self: center;
+    text-align: center;
+}
+
+

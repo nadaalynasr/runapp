@@ -33,7 +33,7 @@ public class RunService {
         Double distanceMeters, 
         Double bpm) 
         throws SQLException {
-        final String sql = "INSERT INTO run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        final String sql = "insert into run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = dataSource.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
