@@ -130,6 +130,10 @@ public class GroupsService {
         String update =
             "UPDATE group_table SET member_count = member_count - 1 WHERE group_id = ?";
 
+        // deletes the group itself if private group (because only member "creator" is leaving and no one else can join)
+        String deleteGroup = 
+            "delete from group_table where group_id = ? and is_private = true";
+
         try (Connection conn = dataSource.getConnection()) {
 
             PreparedStatement stmt1 = conn.prepareStatement(delete);
@@ -140,6 +144,10 @@ public class GroupsService {
             PreparedStatement stmt2 = conn.prepareStatement(update);
             stmt2.setInt(1, groupId);
             stmt2.executeUpdate();
+
+            PreparedStatement stmt3 = conn.prepareStatement(deleteGroup);
+            stmt3.setInt(1, groupId);
+            stmt3.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
