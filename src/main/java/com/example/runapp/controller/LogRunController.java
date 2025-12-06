@@ -47,6 +47,12 @@ public class LogRunController {
             new InputMetrics("hr-id", "bpm", "ENTER BPM", "number", "bpm")
         );
          mv.addObject("metrics", metrics);
+         // toggle display
+        mv.addObject("toggleId", "share");
+        mv.addObject("toggleLabel", "Share to feed?");
+        mv.addObject("toggleName", "share");
+        mv.addObject("toggleChecked", false);
+        
          mv.addObject("buttonText", "SAVE RUN");
 
         return mv;

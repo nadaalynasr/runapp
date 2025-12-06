@@ -66,7 +66,9 @@ public class GroupsService {
             "FROM group_table g " +
             "WHERE g.group_id NOT IN (" +
             "    SELECT group_id FROM group_membership WHERE user_id = ?" +
-            ")";
+            ")" +
+            "   and g.is_private = false";
+            
 
         List<GroupsView> list = new ArrayList<>();
 

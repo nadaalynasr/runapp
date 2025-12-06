@@ -1,4 +1,4 @@
 <div class="share-row">
-    <label class="share-label" for="share">Share to feed?</label>
-    <input id="share" name="share" type="checkbox" {{#share}}checked{{/share}} />
+    <label class="share-label" for="{{toggleId}}">{{toggleLabel}}</label>
+    <input id="{{toggleId}}" name="{{toggleName}}" type="checkbox" {{#toggleChecked}}checked{{/toggleChecked}} />
 </div>

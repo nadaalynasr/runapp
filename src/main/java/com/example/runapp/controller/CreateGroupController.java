@@ -35,7 +35,7 @@ public class CreateGroupController {
         //centered title
         mv.addObject("pageTitle", "NEW GROUP RUN");
         //input title
-        mv.addObject("id", "create-group-name");
+        mv.addObject("id", "createGroupName");
         mv.addObject("name", "createGroupName");
         mv.addObject("placeholder", "Enter group name...");
         //input metrics
@@ -44,7 +44,14 @@ public class CreateGroupController {
             new InputMetrics("time-id", "time", "SCHEDULE TIME", "time"),
             new InputMetrics("max-id", "memberMax", "MEMBER MAX", "number")
         );
-         mv.addObject("metrics", metrics);
+        mv.addObject("metrics", metrics);
+        // toggle display
+        mv.addObject("toggleId", "isPrivate");
+        mv.addObject("toggleName", "isPrivate");
+        mv.addObject("toggleLabel", "Private group?");
+        mv.addObject("toggleChecked", false);
+
+        // button text
          mv.addObject("buttonText", "POST GROUP RUN");
 
         return mv;
@@ -54,13 +61,18 @@ public class CreateGroupController {
     public String createGroup(@RequestParam String createGroupName, 
             @RequestParam LocalDate date,
             @RequestParam LocalTime time,
-            @RequestParam int memberMax)
+            @RequestParam int memberMax,
+            @RequestParam(name="isPrivate", required=false) String isPrivateField)
             throws SQLException {
+        // sets isPrivate to false if the checkbox is not checked and true otherwise
+        boolean isPrivate = (isPrivateField != null);
+        // sets member max to 1 if group run is private
+        if (isPrivate) 
+            memberMax = 1;
 
-        // String userId = userService.getLoggedInUser().getUserId();
-        String userId = "1"; // temp user id
+        String userId = userService.getLoggedInUser().getUserId();
 
-        createGroupService.createGroup(userId, createGroupName, date, time, memberMax);
+        createGroupService.createGroup(userId, createGroupName, date, time, memberMax, isPrivate);
         
         return "redirect:/groups";
     }
