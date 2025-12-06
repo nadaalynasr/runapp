@@ -1,17 +1,26 @@
 package com.example.runapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.runapp.services.UserService;
+import com.example.runapp.models.User;
+
 @Controller
 public class StatsController {
+
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/stats")
     public ModelAndView statsPage(Model model) {
         ModelAndView mv = new ModelAndView("stats");
         //centered title
-        mv.addObject("pageTitle", "[Username]'S STATS");
+        User user = userService.getLoggedInUser();
+        mv.addObject("pageTitle", user.getFirstName() + "'s STATS");
         mv.addObject("totalRuns", "42");
         mv.addObject("totalDistance", "123.4 miles");
         mv.addObject("bestTime", "18:30");
@@ -36,4 +45,3 @@ public class StatsController {
         }
     }
 }
-
