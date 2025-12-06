@@ -1,16 +1,16 @@
 <div class="basic-run framed">
     <div class="user-info">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLf3qgV0HO3skIJtYI_wxWnMcN4mVX9PxoLQ&s" alt="User avatar">
-        <div class="username">USERNAME</div>
+        <div class="username">User #{{userId}}</div>
     </div>
 
     <div class="run-body">
-        <div class="run-title">[TITLE]</div>
+        <div class="run-title">{{runTitle}}</div>
         <div class="run-content">
-            <div class="run-length">Distance: </div>
-            <div class="run-time">Time: </div>
-            <div class="run-heart">Average Heart Rate: </div>
+            <div class="run-length">Distance: {{distanceFormatted}}</div>
+            <div class="run-time">Time: {{elapsedFormatted}}</div>
+            <div class="run-heart">Average Heart Rate: {{bpm}}</div>
         </div>
-        <div class="run-date">Run Date: </div>
+        <div class="run-date">Run Date: {{runDateFormatted}}</div>
     </div>
 </div>

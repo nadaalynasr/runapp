@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 public class Run {
     private Integer runId;
     private Integer userId;
+    private String runTitle;
     private Date runDate;
     private Timestamp startTime;
     private Timestamp endTime;
@@ -21,6 +22,7 @@ public class Run {
         this.elapsedTime = elapsedTime;
         this.distanceMeters = distanceMeters;
         this.bpm = bpm;
+        this.runTitle = null;
     }
 
     public Integer getRunId() {
@@ -70,6 +72,13 @@ public class Run {
     }
     public void setBpm(Double bpm) {
         this.bpm = bpm;
+    }
+
+    public String getRunTitle() {
+        return runTitle;
+    }
+    public void setRunTitle(String runTitle) {
+        this.runTitle = runTitle;
     }
 
 }
