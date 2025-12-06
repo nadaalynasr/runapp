@@ -2,10 +2,12 @@ package com.example.runapp.models;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Run {
     private Integer runId;
     private Integer userId;
+    private String username;
     private Date runDate;
     private Timestamp startTime;
     private Timestamp endTime;
@@ -34,6 +36,12 @@ public class Run {
     }
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
     public Date getRunDate() {
         return runDate;
@@ -70,6 +78,26 @@ public class Run {
     }
     public void setBpm(Double bpm) {
         this.bpm = bpm;
+    }
+
+    public String getFormattedElapsedTime() {
+        if (elapsedTime == null) return null;
+        int hours = elapsedTime / 3600;
+        int minutes = (elapsedTime % 3600) / 60;
+        int seconds = elapsedTime % 60;
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    public String getFormattedDistance() {
+        if (distanceMeters == null) return null;
+        double miles = distanceMeters / 1609.34;
+        return String.format("%.2f", miles);
+    }
+
+    public String getFormattedRunDate() {
+        if (runDate == null) return null;
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy");
+        return sdf.format(runDate);
     }
 
 }

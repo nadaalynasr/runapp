@@ -55,7 +55,7 @@ public class RunService {
 
         public List<Run> getRuns() throws SQLException {
         List<Run> runs = new ArrayList<>();
-        String sql = "select * from run order by run_date desc";
+        String sql = "SELECT r.*, u.username FROM run r JOIN users u ON r.user_id = u.user_id ORDER BY r.run_date DESC";
 
 
         try (Connection conn = dataSource.getConnection();
@@ -66,6 +66,7 @@ public class RunService {
             while (rs.next()) {
                 Integer runId = rs.getInt("run_id");
                 Integer userId = rs.getInt("user_id");
+                String username = rs.getString("username");
                 Date runDate = rs.getDate("run_date");
                 Timestamp startTime = rs.getTimestamp("start_time");
                 Timestamp endTime = rs.getTimestamp("end_time");
@@ -76,6 +77,7 @@ public class RunService {
 
                 Run run = new Run(userId, runDate, startTime, endTime, elapsedTime, distanceMeters, bpm);
                 run.setRunId(runId);
+                run.setUsername(username);
                 runs.add(run);
             }
         }

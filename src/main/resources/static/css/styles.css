@@ -8,21 +8,27 @@
     src: url("/fonts/Montserrat-VariableFont_wght.ttf");
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 
 main {
     display: flex;
     flex-direction: column;
     width: 100%;
+    flex: 1;
+    justify-content: center;
 }
 
 .posts {
     display: flex;
-    margin: 3rem 0 0 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
 .heading {
     display: flex;
     font-family: Druk-Wide;
@@ -359,7 +365,7 @@ h1, .page-title {
 
 
 .framed {
-    width: 50%;
+    width: 100%;
     border: 0.8pt solid rgba(0, 0, 0, 0.60);
     border-radius: 20pt;
 }
@@ -474,6 +480,17 @@ h1, .page-title {
     margin-top: 24px;
 }
 
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.runs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .empty-message {
     font-family: Druk-Wide;
     font-size: 2rem;
