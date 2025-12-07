@@ -78,3 +78,7 @@ create table if not exists personal_best (
     foreign key (user_id) references users(user_id),
     foreign key (run_id) references run(run_id)
 );
+
+-- Indexing for group filter optimization
+CREATE INDEX idx_group_membership_user_id ON group_membership(user_id);
+CREATE INDEX idx_group_table_is_private ON group_table(is_private);
