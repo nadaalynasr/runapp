@@ -1,0 +1,5 @@
+For security and password storage, we used the same approach as Project 2. 
+To store the passwords in the database, we used bcrpyt to hash them first. 
+The functionality for this was provided during SpringBoot setup. 
+User passwords are encoded with passwordEncoder.encode(password) in UserService before being added to the database. 
+

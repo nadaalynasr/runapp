@@ -1,5 +1,3 @@
-USE runapp_platform;
-
 INSERT INTO group_table (group_id, group_name, created_by_user_id, is_private, member_count, next_run_date, next_run_time, member_max) VALUES ('1', 'Group Run 1', 95, 0, 4, '2026-02-15', '08:00:00', 1);
 INSERT INTO group_table (group_id, group_name, created_by_user_id, is_private, member_count, next_run_date, next_run_time, member_max) VALUES ('2', 'Group Run 2', 30, 0, 1, '2026-02-17', '07:00:00', 2);
 INSERT INTO group_table (group_id, group_name, created_by_user_id, is_private, member_count, next_run_date, next_run_time, member_max) VALUES ('3', 'Group Run 3', 50, 0, 2, '2026-01-14', '20:00:00', 4);

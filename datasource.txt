@@ -1,0 +1,20 @@
+All sample data was generated using python scripts that can be found in the data folder at: src/main/java/com/example/runapp/data
+The resulting queries to insert the sample data were compiled into a file called data.sql
+This file is also divided into separate files for each table, also under the data table. 
+
+
+Sample user data: 
+src/main/java/com/example/runapp/data/generate_sample_users.py
+src/main/java/com/example/runapp/data/sample_users.sql
+
+
+Sample run data: 
+src/main/java/com/example/runapp/data/generate_sample_runs.py
+src/main/java/com/example/runapp/data/sample_runs.sql
+
+Sample group data: 
+src/main/java/com/example/runapp/data/generate_sample_groups.py
+src/main/java/com/example/runapp/data/sample_groups.sql
+
+
+
