@@ -41,7 +41,7 @@ Log A Run Page: I implemented the Log A Run page that allows users to save their
 
 Create Group Run page: In Create Group Run (CGR) page, users are able to schedule group runs by inputting the name, date, time, and max number of members for the group run. I implemented CGR page by building a controller that reuses existing UI fragments from Log a Run page to display the required CGR page design. I restricted user input for the date, time, and member max fields to ensure correct data format and more intuitive data inputs. I also ensured that the group creator is added as the first member.
 
-Private feature: I generalized the share toggle from Log a Run page so that it could be reused as CGR page's private toggle. When a group run is private, only the creator can see it in the Groups page. If the creator leaves the group run, it is deleted from the database.
+Private feature: I generalized the share toggle from Log a Run page so that it could be reused as CGR page's private toggle. When a group run is private, only the creator can see it in the Groups page. If the creator leaves the group run, it is deleted from the database and disappears from Group page.
 
 ## Technologies Used
 
