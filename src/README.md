@@ -8,7 +8,9 @@
 
 
 ### Andrea Ayon
+Groups Page: I implemented the Groups Page, which shows two sections: the groups a user is already part of and the groups they can join. To build this page, I added the logic to load the user’s current groups, display all other available groups, and update the member count when someone joins or leaves. I also connected these actions to the buttons on each group card so the page responds immediately to user interaction. On the UI side, I implemented a reusable group card component to keep the layout consistent, making sure each group displays its name, member information, and next run details.
 
+Trending Page: I created the UI and layout for the Trending Page, setting up its structure and design. I reused the Groups Page Mustache components so the layout follows a similar format and keeps the app’s design consistent.
 
 
 ### Emily Freeman
