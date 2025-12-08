@@ -30,6 +30,8 @@ Trending Page: I created the UI and layout for the Trending Page, setting up its
 
 Login & Registration Pages: I implemented the UI for the Login and Registration pages, giving them a clean layout and styling that matches the rest of the app. These pages provide a simple, user-friendly way for users to log in or create a new account.
 
+ER Diagram: I created an Entity–Relationship (ER) diagram to model the data needed for the RunApp platform. The ER model includes seven main entities: User, Run, Stats, Group, Group Membership, and Personal Best. I identified the attributes for each entity and the relationships between them, such as users logging runs, joining groups, and achieving personal bests. The diagram also captures the cardinalities and foreign key constraints that later guided the creation of the relational database schema. This ER diagram served as the foundation for converting the conceptual model into tables during the normalization and implementation phases.
+
 ### Emily Freeman
 
 Log A Run Page: I implemented the Log A Run page that allows users to save their runs into their account. Each new run entry contains the duration of the run, the distance, and BPM. We assume the time of entry as the ending time, and calculate the start time ourselves. We also save the run's title in a similar way to Strava, where no title entered then defaults to a time-based default title. I implemented the UI for this page in a way that could be reused for the Create Group page.
