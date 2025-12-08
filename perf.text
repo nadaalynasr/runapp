@@ -1,0 +1,33 @@
+Commands run to time:
+set profiling = 1;
+show profiles; 
+data from duration col. 
+
+CREATE INDEX idx_group_membership_user_id ON group_membership(user_id);
+Affected queries:
+1. SELECT g.group_id, g.group_name, g.member_count, g.member_max, g.next_run_date, g.next_run_time FROM group_table g JOIN group_membership gm ON g.group_id = gm.group_id WHERE gm.user_id = ?
+    - Before indexing: 0.00033525
+    - After indexing: 0.00102700
+
+2. SELECT group_id FROM group_membership WHERE user_id = ?
+    - Before indexing: 0.00072725
+    - After indexing: 0.00620775 
+
+3. DELETE FROM group_membership WHERE user_id = ? AND group_id = ?
+    - Before indexing: 0.00392150
+    - After indexing: 0.00206150
+
+
+CREATE INDEX idx_group_table_is_private ON group_table(is_private);
+Affected queries:
+1. SELECT g.group_id, g.group_name, g.member_count, g.member_max, g.next_run_date, g.next_run_time FROM group_table g WHERE g.group_id NOT IN (SELECT group_id FROM group_membership WHERE user_id = ?) AND g.is_private = false
+    - Before indexing: 0.00180375 
+    - After indexing: 0.00112875
+
+2. DELETE FROM group_table WHERE group_id = ?(4) AND is_private = true
+    - Before indexing: 0.00081225
+    - After indexing: 0.00063675
+
+
+
+
