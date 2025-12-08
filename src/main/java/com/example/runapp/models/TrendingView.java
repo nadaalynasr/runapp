@@ -8,7 +8,13 @@ public class TrendingView {
     private boolean isMember;
 
     // TODO: angel will implement constructors + logic later
-
+    public TrendingView(int id, String name, String nextRunDisplay, int memberCount, boolean isMember) {
+        this.id = id;
+        this.name = name;
+        this.nextRunDisplay = nextRunDisplay;
+        this.memberCount = memberCount;
+        this.isMember = isMember;
+    }
     // Getters (optional placeholders)
     public int getId() { return id; }
     public String getName() { return name; }

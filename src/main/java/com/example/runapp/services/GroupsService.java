@@ -153,4 +153,36 @@ public class GroupsService {
             throw new RuntimeException(e);
         }
     }
+
+    // Pull trending groups
+    public List<TrendingView> getTrendingGroups() {
+        String sql =
+            "SELECT g.group_id, g.group_name, g.member_count, g.next_run_date, g.next_run_time " +
+            "FROM group_table g order by g.member_count desc limit 5";
+        List<TrendingView> list = new ArrayList<>();
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("group_id");
+                String name = rs.getString("group_name");
+                int memberCount = rs.getInt("member_count");
+                int memberMax = rs.getInt("member_max");
+                Date nextDate = rs.getDate("next_run_date");
+                Time nextTime = rs.getTime("next_run_time");
+
+                String nextRunDisplay = formatNextRun(nextDate, nextTime);
+
+                list.add(new TrendingView(id, name, nextRunDisplay, memberCount, false));
+            }
+
+        } catch (SQLException e) { 
+            throw new RuntimeException(e);
+        }
+
+        return list;
+    }
 }

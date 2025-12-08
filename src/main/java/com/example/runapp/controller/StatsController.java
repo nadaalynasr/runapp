@@ -7,7 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.runapp.services.UserService;
+import com.example.runapp.services.StatsService;
+import com.example.runapp.services.StatsService.StatsDTO;
+import com.example.runapp.services.StatsService.RunCard;
 import com.example.runapp.models.User;
+
+import java.util.List;
 
 @Controller
 public class StatsController {
@@ -15,33 +20,41 @@ public class StatsController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/stats")
-    public ModelAndView statsPage(Model model) {
-        ModelAndView mv = new ModelAndView("stats");
-        //centered title
-        User user = userService.getLoggedInUser();
-        mv.addObject("pageTitle", user.getFirstName() + "'s STATS");
-        mv.addObject("totalRuns", "42");
-        mv.addObject("totalDistance", "123.4 miles");
-        mv.addObject("bestTime", "18:30");
-        model.addAttribute("topRuns", java.util.List.of(
-            new Run("Morning Sprint", "3.1 miles", "21:10", "2024-10-21"),
-            new Run("Park Loop", "2.8 miles", "19:45", "2024-10-15"),
-            new Run("Hill Climb", "4.0 miles", "32:20", "2024-10-02")
-        ));
-        return mv;
-    }
-    public static class Run {
-        public String title;
-        public String length;
-        public String time;
-        public String date;
+    @Autowired
+    private StatsService statsService;
 
-        public Run(String title, String length, String time, String date) {
-            this.title = title;
-            this.length = length;
-            this.time = time;
-            this.date = date;
-        }
+    @GetMapping("/stats")
+public ModelAndView statsPage(Model model) {
+    ModelAndView mv = new ModelAndView("stats");
+
+    User user = userService.getLoggedInUser();
+    
+    //userId is a STRING now
+    String userId = user.getUserId(); // <-- This is the correct getter
+
+    // recompute stats + update stats table
+    StatsDTO stats = statsService.updateAndGetStatsForUser(userId);
+
+    mv.addObject("pageTitle", user.getFirstName() + "'s STATS");
+    mv.addObject("totalRuns", stats.totalRuns);
+
+    double miles = stats.totalDistanceMeters / 1609.34;
+    mv.addObject("totalDistance", String.format("%.1f miles", miles));
+
+    mv.addObject("bestTime",
+        stats.bestTimeSeconds == null ? "—" : formatSeconds(stats.bestTimeSeconds));
+
+    // top runs for the cards
+    List<RunCard> topRuns = statsService.getTopRunsForUser(userId);
+    model.addAttribute("topRuns", topRuns);
+
+    return mv;
+}
+
+    private String formatSeconds(int totalSeconds) {
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format("%d:%02d", minutes, seconds);
     }
 }
+
