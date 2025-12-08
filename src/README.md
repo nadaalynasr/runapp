@@ -8,9 +8,11 @@
 
 
 ### Andrea Ayon
-Groups Page: I implemented the Groups Page, which shows two sections: the groups a user is already part of and the groups they can join. To build this page, I added the logic to load the user’s current groups, display all other available groups, and update the member count when someone joins or leaves. I also connected these actions to the buttons on each group card so the page responds immediately to user interaction. On the UI side, I implemented a reusable group card component to keep the layout consistent, making sure each group displays its name, member information, and next run details.
+Groups Page: I implemented the Groups Page, which shows two sections: the groups a user is already part of and the groups they can join. To build this page, I added the logic to load the user’s current groups, display all other available groups, and update the member count when someone joins or leaves. I also connected these actions to the buttons on each group card so the page responds immediately to user interaction. On the UI side, I designed the layout for this page and created a reusable group card component that we later used on the Trending Page, ensuring each group displays its name, member information, and next run details consistently.
 
-Trending Page: I created the UI and layout for the Trending Page, setting up its structure and design. I reused the Groups Page Mustache components so the layout follows a similar format and keeps the app’s design consistent.
+Trending Page: I created the UI and layout for the Trending Page, setting up its structure and design. I reused the Groups Page Mustache components so the layout follows a similar format and keeps the app’s overall design consistent.
+
+Login & Registration Pages: I implemented the UI for the Login and Registration pages, giving them a clean layout and styling that matches the rest of the app. These pages provide a simple, user-friendly way for users to log in or create a new account.
 
 
 ### Emily Freeman
