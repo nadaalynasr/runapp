@@ -38,7 +38,7 @@ public class GroupsController {
             return "groups";
         } catch (RuntimeException e) {
             e.printStackTrace();
-            // If there's a backend error (DB, etc.), redirect to home instead of showing Whitelabel error
+            // gets rid of error 
             return "redirect:/";
         }
     }

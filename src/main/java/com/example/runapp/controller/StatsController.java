@@ -29,8 +29,8 @@ public ModelAndView statsPage(Model model) {
 
     User user = userService.getLoggedInUser();
     
-    //userId is a STRING now
-    String userId = user.getUserId(); // <-- This is the correct getter
+    //userId is a string now
+    String userId = user.getUserId(); 
 
     // recompute stats + update stats table
     StatsDTO stats = statsService.updateAndGetStatsForUser(userId);

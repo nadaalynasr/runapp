@@ -14,12 +14,10 @@ public class StatsService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    // ---------- DTOs ----------
-
     public static class StatsDTO {
         public int totalRuns;
         public double totalDistanceMeters;
-        public Integer bestTimeSeconds;   // can be null
+        public Integer bestTimeSeconds;  
         public LocalDateTime lastUpdated;
     }
 
@@ -37,7 +35,6 @@ public class StatsService {
         }
     }
 
-    // ---------- MAIN LOGIC ----------
 
     /**
      * Recalculate stats from the run table (using 3 separate aggregation
@@ -75,10 +72,8 @@ public class StatsService {
 
         // 3) BEST TIME based on distance/time (aggregation: MAX in a subquery)
         //
-        // We find the run that maximizes (distance_meters / elapsed_time)
-        // and return its elapsed_time.
-        //
-        // Note: elapsed_time > 0 to avoid division by zero.
+        // max (distance_meters / elapsed_time) and return its elapsed_time.
+        // elapsed_time > 0 to avoid division by zero.
         String bestTimeSql =
             "SELECT elapsed_time " +
             "FROM run " +
@@ -97,17 +92,16 @@ public class StatsService {
             bestTimeSeconds = jdbcTemplate.queryForObject(
                 bestTimeSql,
                 Integer.class,
-                userId,  // outer WHERE user_id = ?
-                userId   // inner WHERE user_id = ? in subquery
+                userId,  // outer query
+                userId   // inner query
             );
         } catch (EmptyResultDataAccessException ex) {
-            // No runs or no runs with elapsed_time > 0
+            // no runs with elapsed_time > 0 or 0 runs
             bestTimeSeconds = null;
         }
         stats.bestTimeSeconds = bestTimeSeconds;
 
-        // 4) Update stats table (no aggregation needed here)
-        //    Requires stats.user_id to be UNIQUE for ON DUPLICATE KEY to work correctly.
+        // Update stats table
         String upsertSql =
             "INSERT INTO stats (user_id, total_runs, total_distance_meters, best_time_seconds, last_updated) " +
             "VALUES (?, ?, ?, ?, NOW()) " +
@@ -131,7 +125,7 @@ public class StatsService {
 
     /**
      * Top 3 runs for the cards on the stats page.
-     * Ordered by distance/time (best pace first), then by most recent date.
+     * Ordered by distance/time, then by most recent date.
      */
     public List<RunCard> getTopRunsForUser(String userId) {
         String sql =
@@ -156,8 +150,6 @@ public class StatsService {
             }
         );
     }
-
-    // ---------- Helpers ----------
 
     private String formatSeconds(int totalSeconds) {
         int minutes = totalSeconds / 60;
