@@ -1,6 +1,6 @@
 import random
 from datetime import datetime, timedelta
-from hashlib import sha256
+import bcrypt
 
 # generate a random datetime within the last year for created_at
 def random_datetime_last_year():
@@ -18,7 +18,7 @@ for i in range(1, 101):
     username = f"user{i}"
     email = f"user{i}@example.com"
     # hash the password
-    password_hash = sha256(f"password{i}".encode()).hexdigest()
+    password_hash = bcrypt.hashpw(f"password{i}".encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
     first_name = f"First{i}"
     last_name = f"Last{i}"
