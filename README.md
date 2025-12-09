@@ -58,18 +58,18 @@ Database: Python (for sample data)
 
 ## Database Used
 
-Database Name:
-Database Username:
-Database Password:
+Database Name: runapp_platform
+Database Username: root
+Database Password: mysqlpass
 
 ## Test Users
 
-Username 1:
-Password 1:
+Username 1: user1
+Password 1: password1
 
-Username 2:
-Password 2:
+Username 2: user2
+Password 2: password2
 
-Username 3:
-Password 3:
+Username 3: user3
+Password 3: password3
 
