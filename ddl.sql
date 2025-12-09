@@ -21,6 +21,7 @@ create table if not exists users (
 
 create table if not exists run (
     run_id int auto_increment,
+    run_title varchar(50),
     user_id int not null,
     run_date date,
     start_time datetime,

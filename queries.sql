@@ -27,7 +27,7 @@ SELECT r.*, u.username FROM run r JOIN users u ON r.user_id = u.user_id ORDER BY
 
 -- Creates a new run in the database
 -- http://localhost:8080/log-run
-"insert into run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm) VALUES (?, ?, ?, ?, ?, ?, ?)";
+"insert into run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm, run_title) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 -- Gets all groups the current user is a member of
 -- http://localhost:8080/groups
@@ -111,7 +111,7 @@ ON DUPLICATE KEY UPDATE
 
 -- Retrieves the top three runs for a user iredred by speed, if there are ties, the most recent runs are prioritized
 -- http://localhost:8080/stats
-"SELECT run_id, run_date, elapsed_time, distance_meters
+"SELECT COALESCE(run_title, 'Untitled Run') as run_title, run_date, elapsed_time, distance_meters
 FROM run
 WHERE user_id = ?
   AND elapsed_time > 0

@@ -135,7 +135,7 @@ public class StatsService {
      */
     public List<RunCard> getTopRunsForUser(String userId) {
         String sql =
-            "SELECT run_id, run_date, elapsed_time, distance_meters " +
+            "SELECT COALESCE(run_title, 'Untitled Run') as run_title, run_date, elapsed_time, distance_meters " +
             "FROM run " +
             "WHERE user_id = ? " +
             "  AND elapsed_time > 0 " +
@@ -146,7 +146,7 @@ public class StatsService {
             sql,
             new Object[] { userId },
             (rs, rowNum) -> {
-                String title = "Run #" + rs.getInt("run_id");
+                String title = rs.getString("run_title");
                 double miles = rs.getDouble("distance_meters") / 1609.34;
                 String length = String.format("%.1f miles", miles);
                 int totalSec = rs.getInt("elapsed_time");

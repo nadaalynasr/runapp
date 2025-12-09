@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 public class Run {
     private Integer runId;
     private Integer userId;
+    private String runTitle;
     private String username;
     private Date runDate;
     private Timestamp startTime;
@@ -15,7 +16,8 @@ public class Run {
     private Double distanceMeters;
     private Double bpm;
 
-    public Run(Integer userId, Date runDate, Timestamp startTime, Timestamp endTime, Integer elapsedTime, Double distanceMeters, Double bpm) {
+    public Run(String runTitle, Integer userId, Date runDate, Timestamp startTime, Timestamp endTime, Integer elapsedTime, Double distanceMeters, Double bpm) {
+        this.runTitle = runTitle;
         this.userId = userId;
         this.runDate = runDate;
         this.startTime = startTime;
@@ -25,6 +27,12 @@ public class Run {
         this.bpm = bpm;
     }
 
+    public String getRunTitle() {
+        return runTitle;
+    }
+    public void setRunTitle(String runTitle) {
+        this.runTitle = runTitle;
+    }
     public Integer getRunId() {
         return runId;
     }

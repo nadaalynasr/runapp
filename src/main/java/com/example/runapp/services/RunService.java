@@ -31,9 +31,10 @@ public class RunService {
         Timestamp endTime, 
         Integer elapsedTime, 
         Double distanceMeters, 
-        Double bpm) 
+        Double bpm,
+        String runTitle) 
         throws SQLException {
-        final String sql = "insert into run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        final String sql = "insert into run (user_id, run_date, start_time, end_time, elapsed_time, distance_meters, bpm, run_title) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = dataSource.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -45,7 +46,7 @@ public class RunService {
             stmt.setInt(5, elapsedTime);
             stmt.setDouble(6, distanceMeters);
             stmt.setDouble(7, bpm);
-
+            stmt.setString(8, runTitle);
 
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
@@ -73,9 +74,10 @@ public class RunService {
                 Integer elapsedTime = rs.getInt("elapsed_time");
                 Double distanceMeters = rs.getDouble("distance_meters");
                 Double bpm = rs.getDouble("bpm");
+                String runTitle = null;
+                try { runTitle = rs.getString("run_title"); } catch (Exception e) { }
 
-
-                Run run = new Run(userId, runDate, startTime, endTime, elapsedTime, distanceMeters, bpm);
+                Run run = new Run(runTitle, userId, runDate, startTime, endTime, elapsedTime, distanceMeters, bpm);
                 run.setRunId(runId);
                 run.setUsername(username);
                 runs.add(run);

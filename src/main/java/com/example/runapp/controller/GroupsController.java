@@ -22,28 +22,54 @@ public class GroupsController {
     @GetMapping("/groups")
     public String groupsPage(Model model) {
 
+        if (userService == null || !userService.isAuthenticated()) {
+            return "redirect:/login";
+        }
+
         int userId = Integer.parseInt(userService.getLoggedInUser().getUserId());
 
-        List<GroupsView> myGroups = groupsService.getGroupsForUser(userId);
-        List<GroupsView> discoverGroups = groupsService.getGroupsUserIsNotIn(userId);
+        try {
+            List<GroupsView> myGroups = groupsService.getGroupsForUser(userId);
+            List<GroupsView> discoverGroups = groupsService.getGroupsUserIsNotIn(userId);
 
-        model.addAttribute("myGroups", myGroups);
-        model.addAttribute("discoverGroups", discoverGroups);
+            model.addAttribute("myGroups", myGroups);
+            model.addAttribute("discoverGroups", discoverGroups);
 
-        return "groups";
+            return "groups";
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            // If there's a backend error (DB, etc.), redirect to home instead of showing Whitelabel error
+            return "redirect:/";
+        }
     }
 
     @PostMapping("/groups/{groupId}/join")
     public String joinGroup(@PathVariable int groupId) {
+        if (userService == null || !userService.isAuthenticated()) {
+            return "redirect:/login";
+        }
         int userId = Integer.parseInt(userService.getLoggedInUser().getUserId());
-        groupsService.joinGroup(userId, groupId);
+        try {
+            groupsService.joinGroup(userId, groupId);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return "redirect:/";
+        }
         return "redirect:/groups";
     }
 
     @PostMapping("/groups/{groupId}/leave")
     public String leaveGroup(@PathVariable int groupId) {
+        if (userService == null || !userService.isAuthenticated()) {
+            return "redirect:/login";
+        }
         int userId = Integer.parseInt(userService.getLoggedInUser().getUserId());
-        groupsService.leaveGroup(userId, groupId);
+        try {
+            groupsService.leaveGroup(userId, groupId);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return "redirect:/";
+        }
         return "redirect:/groups";
     }
     

@@ -121,7 +121,12 @@ public class LogRunController {
         }
 
         try {
-            boolean created = runService.createRun(userId, runDate, startTime, endTime, elapsedSeconds, distanceMeters, bpm);
+            
+            if (title == null || title.isBlank()) {
+                title = logRunService.getPlaceholderForTime(LocalTime.now());
+            }
+
+            boolean created = runService.createRun(userId, runDate, startTime, endTime, elapsedSeconds, distanceMeters, bpm, title);
         } catch (SQLException e) {
             e.printStackTrace();
         }

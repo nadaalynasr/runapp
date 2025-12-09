@@ -6,6 +6,7 @@
 
     <div class="run-body">
         <div class="run-content">
+            {{#runTitle}}<div class="run-title">{{runTitle}}</div>{{/runTitle}}
             <div class="run-length">Distance: {{formattedDistance}} miles</div>
             <div class="run-time">Time: {{formattedElapsedTime}}</div>
             <div class="run-heart">Average Heart Rate: {{bpm}} bpm</div>
