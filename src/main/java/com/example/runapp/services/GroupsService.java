@@ -129,7 +129,7 @@ public class GroupsService {
         String update =
             "UPDATE group_table SET member_count = member_count - 1 WHERE group_id = ?";
 
-        // deletes the group itself if private group (because only member "creator" is leaving and no one else can join)
+        // deletes the group itself if private group (because only member "creator" is leaving and no one else can join
         String deleteGroup = 
             "delete from group_table where group_id = ? and is_private = true";
 
