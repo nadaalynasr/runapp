@@ -1,4 +1,4 @@
-# Term Project - Strupe
+# Term Project - Stroop
 
 ## Group ugrd-19
 
