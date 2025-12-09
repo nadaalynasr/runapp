@@ -38,7 +38,11 @@ ER Diagram: I created an Entity–Relationship (ER) diagram to model the data ne
 Log A Run Page: I implemented the Log A Run page that allows users to save their runs into their account. Each new run entry contains the duration of the run, the distance, and BPM. We assume the time of entry as the ending time, and calculate the start time ourselves. We also save the run's title in a similar way to Strava, where no title entered then defaults to a time-based default title. I implemented the UI for this page in a way that could be reused for the Create Group page.
 
 ### Angel Lopez
+Stats page: I implemented the stats page that displays a user's number of runs, total distance ran, and the best time based on speed (distance/time). It also displays the top three runs based on speed. The page serves as a personal performace dashbaord, giving each user immediate insight into their progress, running habits, and best historical performances within the project. 
 
+StatsController: This handles all GET functions for /stats requests. It retrieves the current user and triggers a stats refresh each time the page is clicked on. It gathers total runs, total distance, best time, and the user's top three runs. It formats the values for display (miles, duration, and date) and passes it along to its own respective mustache model. 
+
+StatsService: Performs all aggregation logic using queries against the run table. It uses three main queries of run count, summed distance, and best time based on speed. It updates its respective entry in the stats table. It retrieves the top three runs ordered by best speed for display on the Stats page. 
 ### Jamie Chen
 
 Create Group Run page: In Create Group Run (CGR) page, users are able to schedule group runs by inputting the name, date, time, and max number of members for the group run. I implemented CGR page by building a controller that reuses existing UI fragments from Log a Run page to display the required CGR page design. I restricted user input for the date, time, and member max fields to ensure correct data format and more intuitive data inputs. I also ensured that the group creator is added as the first member.

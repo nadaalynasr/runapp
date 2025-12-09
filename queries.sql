@@ -72,3 +72,48 @@ WHERE group_id = ?";
 -- http://localhost:8080/groups/{id}/leave
 "DELETE FROM group_table
 WHERE group_id = ? AND is_private = true";
+
+-- Counts the total number of runs a user has logged
+-- http://localhost:8080/stats
+"SELECT COUNT(*)
+FROM run
+WHERE user_id = ?";
+
+-- Sums the total distance of all runs a user has logged
+-- http://localhost:8080/stats
+"SELECT COALESCE(SUM(distance_meters), 0)
+FROM run
+WHERE user_id = ?";
+
+-- Finds the run with the best speed for a user and returns its elapsed time, used as the user's best time
+-- http://localhost:8080/stats
+"SELECT elapsed_time
+FROM run
+WHERE user_id = ?
+  AND elapsed_time > 0
+  AND (distance_meters / elapsed_time) = (
+      SELECT MAX(distance_meters / elapsed_time)
+      FROM run
+      WHERE user_id = ?
+        AND elapsed_time > 0
+  )
+LIMIT 1";
+
+-- Inserts or updates the aggregated stats for a user in the stats table each time the Stats page is accessed
+-- http://localhost:8080/stats
+"INSERT INTO stats (user_id, total_runs, total_distance_meters, best_time_seconds, last_updated)
+VALUES (?, ?, ?, ?, NOW())
+ON DUPLICATE KEY UPDATE
+  total_runs = VALUES(total_runs),
+  total_distance_meters = VALUES(total_distance_meters),
+  best_time_seconds = VALUES(best_time_seconds),
+  last_updated = VALUES(last_updated)";
+
+-- Retrieves the top three runs for a user iredred by speed, if there are ties, the most recent runs are prioritized
+-- http://localhost:8080/stats
+"SELECT run_id, run_date, elapsed_time, distance_meters
+FROM run
+WHERE user_id = ?
+  AND elapsed_time > 0
+ORDER BY (distance_meters / elapsed_time) DESC, run_date DESC
+LIMIT 3";
