@@ -35,14 +35,14 @@ public class GroupsController {
 
     @PostMapping("/groups/{groupId}/join")
     public String joinGroup(@PathVariable int groupId) {
-        int userId = 1;
+        int userId = Integer.parseInt(userService.getLoggedInUser().getUserId());
         groupsService.joinGroup(userId, groupId);
         return "redirect:/groups";
     }
 
     @PostMapping("/groups/{groupId}/leave")
     public String leaveGroup(@PathVariable int groupId) {
-        int userId = 1;
+        int userId = Integer.parseInt(userService.getLoggedInUser().getUserId());
         groupsService.leaveGroup(userId, groupId);
         return "redirect:/groups";
     }
